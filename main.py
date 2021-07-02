@@ -10,69 +10,11 @@ import functools
 import json
 import requests
 
-names = [
-    "梁宇轩",
-    "万弈新",
-    "包容先",
-    "刘嘉瑞",
-    "王培宇",
-    "李子杰",
-    "杨嘉昊",
-    "罗钧译",
-    "蒲家琦",
-    "范钧奕",
-    "赵鸿铮",
-    "高子桐",
-    "金子喆",
-    "戴承霖",
-    "张祐嘉",
-    "卫晨",
-    "杨云聪",
-    "陈奕霖",
-    "张依山",
-    "陈孙可",
-    "纪伽阳",
-    "刘祺",
-    "田博豪",
-    "王嘉宸",
-    "许凯瑞",
-    "叶子麟",
-    "张煜民",
-    "邹启贤",
-    "孙夕晰",
-    "蔺一迪",
-    "刘怡辰",
-    "吴佩祺",
-    "黄紫睿",
-    "周璟雯",
-    "王一帆",
-    "张子越",
-    "郭语格",
-    "张琦煊",
-    "张茜子",
-    "李怡静",
-    "吕瑗辰",
-    "袁新婷",
-    "周可欣",
-    "罗清戈",
-    "陈玉晗",
-    "张枢淳",
-    "王悦悦",
-    "戈子源",
-    "金熙真",
-    "孟芮希",
-    "王晨宇",
-    "郇云迪",
-    "余蜀豫",
-    "杨雨轩",
-    "杨易男",
-    "王奕霏",
-    "任奕成",
-    "董力玮"
-]
-
+# 如需使用 total 函数，请在该列表填写姓名，按照学号顺序
+names = []
 
 class Person:
+    # 实例化每个信息
     def __init__(self, uid, name, score, num):
         self.uid = uid
         self.name = name
@@ -84,6 +26,7 @@ class Person:
 
 
 def score_cmp(self, other):
+    # 类排序
     try:
         tmp1 = int(self.num)
         tmp2 = int(other.num)
@@ -98,12 +41,14 @@ def score_cmp(self, other):
 
 
 def inquire(uid, name):
+    # 请求数据
     return requests.get(
         f"http://www.sales1.top/score/interface/search_exam_all_score.jsp?student_name={name}&student_num={uid}&course=%E5%85%A8%E9%83%A8"
     ).text
 
 
 def simple():
+    # 带有提示，获取单个数据
     try:
         name = input("请输入学生姓名: ")
         uid = int(input("请输入学号: "))
@@ -119,6 +64,7 @@ def simple():
 
 
 def total(type):
+    # 批量获取数据，需先填写 names 列表
     # type=0 按学号排列
     # type=1 按分数排列
     people = [Person(0, "", 0, 59)] * 60
@@ -148,4 +94,5 @@ def total(type):
 
 
 if __name__ == '__main__':
-    total(type=1)
+    # total(0)
+    simple()
