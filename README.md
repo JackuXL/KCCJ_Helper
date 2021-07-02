@@ -11,3 +11,5 @@ requests.get(f"http://www.sales1.top/score/interface/search_exam_all_score.jsp?s
 使用 Fiddler 抓包获取 API。
 
 仅供学习参考。
+
+部分功能（如批量获取）需要修改入口函数。
